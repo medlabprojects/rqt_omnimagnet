@@ -1,0 +1,17 @@
+<library path="lib/librqt_omnimagnet">
+  <class name="OmnimagTest" type="rqt_omnimagnet::OmnimagTest" base_class_type="rqt_gui_cpp::Plugin">
+    <description>
+      rqt plugin for testing the Omnimagnet.
+    </description>
+    <qtgui>
+      <group>
+        <label>MED Lab</label>
+        <icon type="theme">go-home</icon>
+        <statustip>MED Lab plugins</statustip>
+      </group>
+      <label>Omnimagnet</label>
+      <icon type="theme">network-wireless</icon>
+      <statustip>rqt plugin for testing the Omnimagnet.</statustip>
+    </qtgui>
+  </class>
+</library>
