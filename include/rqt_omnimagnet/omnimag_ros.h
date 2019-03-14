@@ -37,6 +37,7 @@ public:
   QString getMac(void); // returns MAC address via uint8_t[6]
   bool    isRosControlEnabled(void) {return current_control_state_;} // NOTE: may not be accurate if state has changed since last status query
   bool    isAmpEnabled(uint8_t amp);
+  double coilCurrentScaling(void) {return omnimagnet_->coilCurrentScaling();}
 
 public slots:
   void enableRosControl(bool cmd);

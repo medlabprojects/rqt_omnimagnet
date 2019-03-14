@@ -156,6 +156,23 @@
           </property>
          </spacer>
         </item>
+        <item>
+         <widget class="QLabel" name="label_19">
+          <property name="text">
+           <string>Current Scaling [V/A]:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="doubleSpinBox_coil_current_scaling">
+          <property name="maximum">
+           <double>10.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.050000000000000</double>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
      </layout>

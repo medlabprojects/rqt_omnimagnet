@@ -54,7 +54,13 @@ void OmnimagTest::connectNode()
 
   // initialize omnimag
   omnimag_ = std::make_unique<OmnimagRos>();
-  omnimag_->init(omnimag_node_name_);
+  omnimag_->init(omnimag_node_name_);     
+
+  // coil current scaling
+  ui_.doubleSpinBox_coil_current_scaling->setValue(omnimag_->coilCurrentScaling());
+  connect(ui_.doubleSpinBox_coil_current_scaling, static_cast<void(QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), this,
+      [this](double new_value){ omnimag_->setCoilCurrentScaling(new_value); }
+  );
 
   // connect OmnimagRos signals/slots
   connect(omnimag_.get(), SIGNAL(controlStateChanged(bool)),
@@ -126,6 +132,7 @@ void OmnimagTest::connectionLost()
   ui_.checkBox_outer->setCheckable(true);
 
   // enable connection button
+  ui_.button_connect_omnimag->setText("Connect");
   connect(ui_.button_connect_omnimag, SIGNAL(pressed()),
           this, SLOT(connectNode()));
 }
