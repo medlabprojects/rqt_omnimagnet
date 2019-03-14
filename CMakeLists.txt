@@ -65,8 +65,10 @@ add_library(${PROJECT_NAME}
     ${${PROJECT_NAME}_UIS_H}
 )
 
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
-target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
+target_link_libraries(${PROJECT_NAME}
+  ${catkin_LIBRARIES}
+  Qt5::Widgets
+)
 
 find_package(class_loader)
 class_loader_hide_library_symbols(${PROJECT_NAME})

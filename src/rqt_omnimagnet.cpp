@@ -102,8 +102,38 @@ void OmnimagTest::connectionEstablished()
   connect(ui_.button_power_off, SIGNAL(pressed()),
           this,                 SLOT(powerOffOmnimag()));
 
+  // enable checkboxes
+  ui_.checkBox_inner->setCheckable(true);
+  ui_.checkBox_middle->setCheckable(true);
+  ui_.checkBox_outer->setCheckable(true);
+
   // put omnimag into ROS Control state
   omnimag_->enableRosControl(true);
+}
+
+void OmnimagTest::connectionLost()
+{
+  ui_.label_status->setText("DISCONNECTED");
+
+  ui_.button_reset_dacs->disconnect();
+  ui_.tabWidget_mode->disconnect();
+  ui_.button_power_on->disconnect();
+  ui_.button_power_off->disconnect();
+
+  // disable checkboxes
+  ui_.checkBox_inner->setCheckable(true);
+  ui_.checkBox_middle->setCheckable(true);
+  ui_.checkBox_outer->setCheckable(true);
+}
+
+void OmnimagTest::controlStateChanged(bool controlState)
+{
+
+}
+
+void OmnimagTest::ampStateChanged(int amp)
+{
+
 }
 
 void OmnimagTest::powerOnOmnimag()
@@ -196,7 +226,7 @@ void OmnimagTest::updateBmagLabel()
 
 void OmnimagTest::setupCurrentsMode()
 {
-  // checkboxes
+  // checkboxes 
   connect(ui_.checkBox_inner, &QAbstractButton::clicked, this,
           [this](){ omnimag_->enableAmp(0, ui_.checkBox_inner->isChecked()); } );
 

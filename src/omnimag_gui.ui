@@ -170,7 +170,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <property name="usesScrollButtons">
       <bool>false</bool>
@@ -207,6 +207,9 @@
           <widget class="QCheckBox" name="checkBox_middle">
            <property name="text">
             <string>Middle</string>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -253,6 +256,9 @@
            <property name="text">
             <string>Inner</string>
            </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
            <property name="checked">
             <bool>false</bool>
            </property>
@@ -262,6 +268,9 @@
           <widget class="QCheckBox" name="checkBox_outer">
            <property name="text">
             <string>Outer</string>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
