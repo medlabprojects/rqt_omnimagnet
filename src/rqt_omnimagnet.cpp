@@ -124,6 +124,10 @@ void OmnimagTest::connectionLost()
   ui_.checkBox_inner->setCheckable(true);
   ui_.checkBox_middle->setCheckable(true);
   ui_.checkBox_outer->setCheckable(true);
+
+  // enable connection button
+  connect(ui_.button_connect_omnimag, SIGNAL(pressed()),
+          this, SLOT(connectNode()));
 }
 
 void OmnimagTest::controlStateChanged(bool controlState)
