@@ -26,6 +26,7 @@ public:
   std::string nodeName(void) {return nodeName_;}
   void init(std::string nodeName);
   bool isConnected(void);
+  void setCoilCurrentScaling(double dac_volts_per_amp) {omnimagnet_->setCoilCurrentScaling(dac_volts_per_amp);}
   bool setCoilCurrents(Eigen::Vector3d coil_currents);
   bool setFieldAtPoint(Eigen::Vector3d desired_field, Eigen::Vector3d p);
   bool setDacs(Eigen::Vector3d voltages);

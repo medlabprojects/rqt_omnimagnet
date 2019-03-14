@@ -19,18 +19,19 @@ public:
   OmniMagnet(void);
 
   // constructs an OmniMagnet using the specified properties
-  OmniMagnet(Eigen::Vector3d dipole_moment_per_amp, double amp_scaling);
+  OmniMagnet(Eigen::Vector3d dipole_moment_per_amp, double dac_volts_per_amp);
 
 
   // Function that maps desired field [T] at a point [m] to omnimag coil currents
   Eigen::Vector3d calcCoilCurrents(Eigen::Vector3d desired_field, Eigen::Vector3d p);
 
   // Maps the desired coil currents to input control voltages for the amps
-  Eigen::Vector3d calcDacVoltages(Eigen::Vector3d desired_coil_currents) {return desired_coil_currents * amp_scaling_;}
+  Eigen::Vector3d calcDacVoltages(Eigen::Vector3d desired_coil_currents) {return desired_coil_currents * coil_current_scaling_;}
 
   Eigen::Vector3d dipoleMomentPerAmp(void) {return M_.diagonal();}
 
-  double ampScaling(void) {return amp_scaling_;}
+  void setCoilCurrentScaling(double amps_per_volt) {coil_current_scaling_ = amps_per_volt;}
+  double coilCurrentScaling(void) {return coil_current_scaling_;}
 
 private:
 
@@ -39,7 +40,7 @@ private:
   const Eigen::DiagonalMatrix<double, 3> M_;
 
   // Scaling from control voltage to output current [A/V]
-  const double amp_scaling_;
+  double coil_current_scaling_;
 
   // Last computed currents for each coil in the omnimagnet [A]
   Eigen::Vector3d coil_currents_ = {0, 0, 0};

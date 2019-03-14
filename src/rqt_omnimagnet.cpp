@@ -274,9 +274,12 @@ void OmnimagTest::setupCurrentsMode()
   // reset currents button
   connect(ui_.button_reset_currents, &QAbstractButton::pressed,
           this, [this](){
-                  ui_.slider_current_inner->setValue(0); // will also update spin boxes
+                  ui_.slider_current_inner->setValue(0);
                   ui_.slider_current_middle->setValue(0);
                   ui_.slider_current_outer->setValue(0);
+                  ui_.doubleSpinBox_current_inner->setValue(0.0);
+                  ui_.doubleSpinBox_current_middle->setValue(0.0);
+                  ui_.doubleSpinBox_current_outer->setValue(0.0);
                   setCurrents();
                 }
   );

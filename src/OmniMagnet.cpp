@@ -11,13 +11,13 @@
 
 OmniMagnet::OmniMagnet()
   : M_(Eigen::DiagonalMatrix<double,3>{26.2347, 26.2366, 26.2356}) // [(A*m^2)/A]
-  , amp_scaling_(5.0) // [A/V] using AMC PS50A ampifiers with {-10V,10V} intput corresponding to {-50A,50A} output
+  , coil_current_scaling_(0.2) // [V/A] using AMC PS50A ampifiers with {-10V,10V} intput corresponding to {-50A,50A} output
 {
 }
 
-OmniMagnet::OmniMagnet(Eigen::Vector3d dipole_moment_per_amp, double amp_scaling)
+OmniMagnet::OmniMagnet(Eigen::Vector3d dipole_moment_per_amp, double dac_volts_per_amp)
   : M_(Eigen::DiagonalMatrix<double,3>{dipole_moment_per_amp})
-  , amp_scaling_(amp_scaling)
+  , coil_current_scaling_(dac_volts_per_amp)
 {
 }
 
