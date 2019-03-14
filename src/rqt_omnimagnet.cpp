@@ -134,6 +134,14 @@ void OmnimagTest::modeChanged(int new_mode)
   switch (current_mode_){
   case Mode::CURRENTS:
     // disconnect
+    ui_.checkBox_inner->disconnect();
+    ui_.checkBox_middle->disconnect();
+    ui_.checkBox_outer->disconnect();
+    ui_.slider_current_inner->disconnect();
+    ui_.slider_current_middle->disconnect();
+    ui_.slider_current_outer->disconnect();
+    ui_.button_set_currents->disconnect();
+    ui_.button_reset_currents->disconnect();
     break;
   case Mode::FIELD:
     break;
@@ -175,6 +183,15 @@ void OmnimagTest::setCurrents()
   }
 
   ros::Duration(0.005).sleep();
+}
+
+void OmnimagTest::updateBmagLabel()
+{
+  Eigen::Vector3d b;
+  b << ui_.doubleSpinBox_bx->value(),
+          ui_.doubleSpinBox_by->value(),
+          ui_.doubleSpinBox_bz->value();
+  double bmag = b.norm();
 }
 
 void OmnimagTest::setupCurrentsMode()
@@ -237,6 +254,36 @@ void OmnimagTest::setupCurrentsMode()
 
 void OmnimagTest::setupFieldMode()
 {
+
+  // slider to scale ||B||
+  connect(ui_.slider_bmag, SIGNAL(valueChanged()),
+          ui_.label_bmag_percent, SLOT(setNum()));
+
+  connect(ui_.slider_bmag, &QAbstractSlider::sliderReleased, this,
+          [this](){
+            ui_.doubleSpinBox_bx->setValue(ui_.doubleSpinBox_bx->value() * ui_.slider_bmag->value()/100.0);
+            ui_.doubleSpinBox_by->setValue(ui_.doubleSpinBox_by->value() * ui_.slider_bmag->value()/100.0);
+            ui_.doubleSpinBox_bz->setValue(ui_.doubleSpinBox_bz->value() * ui_.slider_bmag->value()/100.0);
+          }
+  );
+
+  // ||B|| label
+//  connect(ui_.)
+
+  // set currents button
+  connect(ui_.button_set_currents2, SIGNAL(pressed()),
+          this,                    SLOT(setCurrents()));
+
+  // reset currents button
+  connect(ui_.button_reset_currents2, &QAbstractButton::pressed,
+          this, [this](){
+                  ui_.slider_current_inner->setValue(0); // will also update spin boxes
+                  ui_.slider_current_middle->setValue(0);
+                  ui_.slider_current_outer->setValue(0);
+                  setCurrents();
+                }
+  );
+
   current_mode_ = Mode::FIELD;
 }
 

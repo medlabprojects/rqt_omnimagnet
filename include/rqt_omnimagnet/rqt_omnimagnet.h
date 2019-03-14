@@ -36,6 +36,7 @@ protected slots:
   void powerOffOmnimag(void);
   void modeChanged(int new_mode);
   void setCurrents(void);
+  void updateBmagLabel(void);
 
 private:
   Ui::omnimag_gui ui_;

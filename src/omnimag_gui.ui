@@ -190,7 +190,7 @@
         <widget class="QLabel" name="label_10">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>13</pointsize>
           </font>
          </property>
          <property name="text">
@@ -427,7 +427,7 @@
         <widget class="QLabel" name="label_8">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>13</pointsize>
           </font>
          </property>
          <property name="text">
@@ -492,12 +492,12 @@
           <widget class="QLabel" name="label_4">
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>75</width>
              <height>16777215</height>
             </size>
            </property>
            <property name="text">
-            <string>|B|=</string>
+            <string>||B||=</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -505,7 +505,7 @@
           </widget>
          </item>
          <item row="2" column="6">
-          <widget class="QLabel" name="label_5">
+          <widget class="QLabel" name="label_bmag">
            <property name="text">
             <string>xx</string>
            </property>
@@ -620,10 +620,13 @@
          <item>
           <widget class="QSlider" name="slider_bmag">
            <property name="minimum">
-            <number>-500</number>
+            <number>0</number>
            </property>
            <property name="maximum">
-            <number>500</number>
+            <number>200</number>
+           </property>
+           <property name="sliderPosition">
+            <number>100</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -635,6 +638,39 @@
             <number>100</number>
            </property>
           </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_bmag_percent">
+           <property name="text">
+            <string>100</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>%</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_10">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>25</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
          <item>
           <widget class="QPushButton" name="button_reset_slider_bmag">
@@ -676,7 +712,7 @@
         <widget class="QLabel" name="label_14">
          <property name="font">
           <font>
-           <pointsize>12</pointsize>
+           <pointsize>13</pointsize>
           </font>
          </property>
          <property name="text">
@@ -714,7 +750,7 @@
           </widget>
          </item>
          <item row="2" column="2">
-          <widget class="QLabel" name="label_20">
+          <widget class="QLabel" name="label_current_middle">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
@@ -756,7 +792,7 @@
           </widget>
          </item>
          <item row="2" column="3">
-          <widget class="QLabel" name="label_21">
+          <widget class="QLabel" name="label_current_outer">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
@@ -774,7 +810,7 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLabel" name="label_19">
+          <widget class="QLabel" name="label_current_inner">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
@@ -823,7 +859,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="button_set_currents2">
            <property name="minimumSize">
             <size>
              <width>120</width>
@@ -854,7 +890,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="button_reset_currents2">
            <property name="minimumSize">
             <size>
              <width>120</width>
