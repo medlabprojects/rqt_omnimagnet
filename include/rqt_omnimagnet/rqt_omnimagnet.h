@@ -4,10 +4,10 @@
 #include <rqt_gui_cpp/plugin.h>
 #include <ui_omnimag_gui.h>
 #include <QWidget>
-#include "ros/ros.h"
-#include "std_msgs/Bool.h"
 
-
+#include <rqt_omnimagnet/omnimag_ros.h>
+#include <memory>
+#include <array>
 
 namespace rqt_omnimagnet {
 
@@ -26,14 +26,28 @@ public:
   //bool hasConfiguration() const;
   //void triggerConfiguration();
 
+protected slots:
+  void connectNode(void);
+  void connectionEstablished(void);
+  void connectionLost(void);
+  void controlStateChanged(bool controlState);
+  void ampStateChanged(int amp);
+  void powerOnOmnimag(void);
+  void powerOffOmnimag(void);
+  void modeChanged(int new_mode);
+  void setCurrents(void);
 
 private:
   Ui::omnimag_gui ui_;
   QWidget* widget_;
-
-  ros::Publisher pubLeft_;
-
-  void publishLeft(bool currentState);
+  std::unique_ptr<OmnimagRos> omnimag_;
+  std::string omnimag_node_name_;
+  std::array<double,3> omnimag_currents_;
+  enum Mode {CURRENTS = 0, FIELD = 1, SINE = 2};
+  Mode current_mode_ = Mode::CURRENTS;
+  void setupCurrentsMode(void);
+  void setupFieldMode(void);
+  void setupSineMode(void);
 };
 } // namespace
 #endif // my_namespace__my_plugin_H

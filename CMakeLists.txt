@@ -14,18 +14,28 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 
+find_package(Eigen3 REQUIRED NO_MODULE)
+set(${PROJECT_NAME}_INCLUDE_DIRECTORIES
+    include
+    ${EIGEN3_INCLUDE_DIR}
+)
+
 set(${PROJECT_NAME}_SRCS
     src/rqt_omnimagnet.cpp
+    src/omnimag_ros.cpp
+    src/OmniMagnet.cpp
 )
 
 # location of header files
 set(${PROJECT_NAME}_INCLUDES
   include
+  ${EIGEN3_INCLUDE_DIR}
 )
 
 # NOTE: only need to list headers that require moc'ing (i.e. those that inherit QObject)
 set(${PROJECT_NAME}_MOCS
     include/rqt_omnimagnet/rqt_omnimagnet.h
+    include/rqt_omnimagnet/omnimag_ros.h
 )
 
 set(${PROJECT_NAME}_UIS
