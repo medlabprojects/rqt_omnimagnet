@@ -70,6 +70,10 @@ target_link_libraries(${PROJECT_NAME}
   Qt5::Widgets
 )
 
+add_executable(omnimag_spin
+  src/omnimag_spin.cpp
+)
+
 find_package(class_loader)
 class_loader_hide_library_symbols(${PROJECT_NAME})
 
