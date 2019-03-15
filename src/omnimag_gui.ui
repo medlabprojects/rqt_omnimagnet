@@ -57,7 +57,7 @@
       <number>1</number>
      </property>
      <property name="text">
-      <string>Omnimagnet</string>
+      <string>Omnimagnets</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
